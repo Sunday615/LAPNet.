@@ -21,8 +21,8 @@ const containerRef = ref(null);
 
 const logos = [
   { src: "/logos/logo1.png", alt: "BCEL Mobile", left: 40 },
-  { src: "/logos/logo2.png", alt: "Shipstation", left: 140 },
   { src: "/logos/logo3.png", alt: "BigCommerce", left: 260 },
+  { src: "/logos/logo2.png", alt: "Shipstation", left: 140 },
   { src: "/logos/logo4.png", alt: "TaxJar", left: 360 },
   { src: "/logos/logo5.png", alt: "Netsuite", left: 480 },
   { src: "/logos/logo6.png", alt: "Squarespace", left: 500 },

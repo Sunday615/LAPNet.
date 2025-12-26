@@ -62,8 +62,10 @@
           <div class="person-card member-card">
             <div class="avatar-wrapper">
               <div class="avatar">
-                <img src="/logoallmember/circle_scale/STB.png" alt="" />
+                <img src="/board-director-profile/stb.webp" alt="" />
               </div>
+
+           
             </div>
 
             <div class="person-info">

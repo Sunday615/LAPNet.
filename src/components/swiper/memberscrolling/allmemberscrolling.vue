@@ -7,8 +7,8 @@
     <!-- LEFT → RIGHT -->
     <div class="wrapper">
       <div class="itemLeft item1"><img src="/logoallmember/circle_scale/BCEL.png" alt="" /></div>
-      <div class="itemLeft item2"><img src="/logoallmember/circle_scale/LDB.PNG" alt="" /></div>
-      <div class="itemLeft item3"><img src="/logoallmember/circle_scale/APBB.PNG" alt="" /></div>
+      <div class="itemLeft item2"><img src="/logoallmember/circle_scale/APBB.PNG" alt="" /></div>
+      <div class="itemLeft item3"><img src="/logoallmember/circle_scale/LDB.PNG" alt="" /></div>
       <div class="itemLeft item4"><img src="/logoallmember/retangle_scale/jdb.png" alt="" /></div>
       <div class="itemLeft item5"><img  src="/logoallmember/circle_scale/MJBL.png" alt="" /></div>
       <div class="itemLeft item6"><img src="/logoallmember/retangle_scale/LVB.png" alt="" /></div>

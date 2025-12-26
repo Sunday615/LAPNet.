@@ -186,7 +186,7 @@ const layout = [
   [
     {
       type: "member",
-      name: "ທ່ານ CHU XUEMEI",
+      name: "ທ່ານ ນາງ CHU XUEMEI",
       role: "ສະມາຊິກສະພາບໍລິຫານ",
       roleTag: "member",
       image: "/board-director-profile/upi.webp",
@@ -237,7 +237,7 @@ const layout = [
       name: "ທ່ານ ເອກະລາດ ລັດຕະນະຈານ",
       role: "ສະມາຊິກສະພາບໍລິຫານ",
       roleTag: "member",
-      image: "/logoallmember/circle_scale/STB.png",
+      image: "/board-director-profile/stb.webp",
       bankName: "ທະນາຄານ ເອັສທີ ຈຳກັດ",
       bankLogo: "/logoallmember/circle_scale/STB.png",
     },
@@ -567,7 +567,8 @@ onBeforeUnmount(() => {
   min-width: 0;
   font-size: 1.02rem; /* ✅ balance with 34px logo */
   font-weight: 700;
-  line-height: 1.1;
+ 
+  
   letter-spacing: 0.01em;
   color: rgba(226, 232, 240, 0.94);
   overflow: hidden;

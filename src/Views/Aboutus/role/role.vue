@@ -605,4 +605,13 @@ onMounted(() => {
     max-width: 280px;
   }
 }
+@media (max-width:785px) {
+
+  .chip-stack{
+    display: none;
+  }
+  .hero-visual{
+    display: none;
+  }
+}
 </style>

@@ -4,7 +4,7 @@
             <!-- LEFT: TEXT -->
             <div class="hero-left">
                 <h1 class="hero-title">
-                    <span> ຊຳລະຂ້າມແດນ</span>ໃນຮູບແບບQR CODE <span> ລະຫວ່າງປະເທດ</span>
+                  <span> ຊຳລະ</span>ຂ້າມແດນ<span>ຜ່ານ QR CODE </span>
 
                 </h1>
 
@@ -65,7 +65,7 @@
 
                             <div class="mockup-chip mockup-chip-bottom">
                                 <span class="chip-pill"></span>
-                                ຊຳລະເງິນຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ
+                                ຊຳລະຂ້າມແດນຜ່ານ QR Code 
                             </div>
                         </div>
                     </div>

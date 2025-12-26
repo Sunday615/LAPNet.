@@ -294,17 +294,18 @@ const props = withDefaults(defineProps<Props>(), {
       facebookUrl: "https://www.facebook.com/BCEL.Bank",
       websiteUrl: "https://www.bcel.com.la",
     },
-    {
-      name: "ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ (LDB)",
-      logo: "/logoallmember/circle_scale/LDB.PNG",
-      facebookUrl: "https://www.facebook.com/ldblao",
-      websiteUrl: "https://www.ldblao.la/",
-    },
+
     {
       name: "ທະນາຄານ ສົ່ງເສີມກະສິກຳ ຈຳກັດ (APB) ",
       logo: "/logoallmember/circle_scale/APBB.PNG",
       facebookUrl: "https://www.facebook.com/APB.Bank/?locale=th_TH",
       websiteUrl: "https://www.apb.com.la",
+    },
+        {
+      name: "ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ (LDB)",
+      logo: "/logoallmember/circle_scale/LDB.PNG",
+      facebookUrl: "https://www.facebook.com/ldblao",
+      websiteUrl: "https://www.ldblao.la/",
     },
     {
       name: "ທະນາຄານ ຮ່ວມທຸລະກິດລາວ-ຫວຽດ (LVB)  ",

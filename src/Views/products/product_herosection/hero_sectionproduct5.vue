@@ -4,7 +4,7 @@
             <!-- LEFT: TEXT -->
             <div class="hero-left">
                 <h1 class="hero-title">
-                   <span> ການຊໍາລະເງິນ</span>ຂ້າມທະນາຄານຜ່ານ<span> LAPNet</span>
+                   <span>ຊໍາລະ</span>ຂ້າມທະນາຄານ<span>ຜ່ານ LAPNet</span>
                 </h1>
 
                 <p class="hero-subtitle">
@@ -75,7 +75,7 @@
 
                             <div class="mockup-chip mockup-chip-bottom">
                                 <span class="chip-pill"></span>
-                                ການຊໍາລະເງິນຂ້າມທະນາຄານຜ່ານ QR
+                                ຊໍາລະຂ້າມທະນາຄານຜ່ານ LAPNet
                             </div>
                         </div>
                     </div>

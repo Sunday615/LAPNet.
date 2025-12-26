@@ -7,7 +7,7 @@
       'ໜ້າຫຼັກ',
       'ກ່ຽວກັບພວກເຮົາ',
       'ໂຄງຮ່າງການຈັດຕັ້ງ',
-      'ຄະນະອຳນວຍການ',
+      'ຄະນະບໍລິຫານ ພາຍໃນບໍລິສັດ',
     ]"
     background-image="/aboutus/navigatormission-bg.png"
   />
@@ -20,7 +20,7 @@
       <!-- TOP HEADER BAR -->
       <header class="org-header">
         <div class="org-header-left">
-          <h1 class="org-title-lao">ຄະນະອຳນວຍການ</h1>
+          <h1 class="org-title-lao">ຄະນະບໍລິຫານ ພາຍໃນບໍລິສັດ</h1>
         </div>
         <div class="org-header-right">
           <div class="org-logo-circle">
@@ -35,9 +35,8 @@
 
       <!-- ORG CHART FRAME -->
       <section class="org-frame">
-        <!-- ✅ 3 ROWS: CEO / COO / HEADS -->
         <div
-          v-for="(row, rowIndex) in rows"
+          v-for="(row, rowIndex) in rowsToRender"
           :key="rowIndex"
           :class="['org-row', `org-row--${rowIndex}`]"
         >
@@ -46,7 +45,8 @@
             :key="person.id"
             class="org-card"
             :class="[
-              rowIndex === 2 && 'org-card--head'  // ✅ row3 solid color
+              { 'org-card--head': rowIndex >= 2 }, // Heads zone (rowIndex>=2) ทั้ง desktop+mobile
+              { 'org-card--row4': !!person.isRow4 }, // ✅ ใช้ flag ของ person (สำคัญตอน mobile ที่ merge row)
             ]"
           >
             <!-- AVATAR -->
@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 import main_navbar from "../../../components/miannavbar/main_navbar.vue";
 import cpn_navbar from "./navbarcompany/cpn_navbar.vue";
@@ -90,30 +90,26 @@ import secondfooter from "../../../components/footer/mainfooter/secondfooter.vue
 const root = ref(null);
 
 /**
- * ✅ โครงสร้างใหม่:
- * Row 1: CEO
- * Row 2: COO
- * Row 3: Head of Administration, Head of Finance & Accounting, Head of IT, Head of Operations, Audit
- *
- * (แก้ชื่อ/รูปจริงได้เลย)
+ * ✅ baseRows = โครงสร้างจริง (desktop)
+ * ✅ rowsToRender = โครงสร้างที่ใช้ render (mobile 1 column จะ reorder)
  */
-const rows = [
+const baseRows = [
   // Row 1 – CEO
   [
     {
       id: 1,
       name: "ທ່ານ ສີສະໝອນ ສຣິດທິຣາດ",
-      role: "ຜູ້ອຳນວຍການ (CEO)",
+      role: "ຜູ້ອຳນວຍການ ",
       photo: "/aboutus/company/lapnet_employee_image/CEO/CEO.png",
     },
   ],
 
-  // Row 2 – COO (เดิม Deputy เปลี่ยนเป็น COO)
+  // Row 2 – COO
   [
     {
       id: 2,
       name: "ທ່ານ ນາງ ນີວະສອນ ມາລາທິບ",
-      role: "ຮອງຜູ້ອຳນວຍການ (COO)",
+      role: "ຮອງຜູ້ອຳນວຍການ ",
       photo: "/aboutus/company/lapnet_employee_image/CEO/CFO.png",
     },
   ],
@@ -124,25 +120,25 @@ const rows = [
       id: 3,
       name: "ທ່ານ ສັນຕິພາບ ປານມະໄລທອງ ",
       role: "ຫົວໜ້າພະແນກຫ້ອງການ",
-            photo: '/aboutus/company/lapnet_employee_image/aministration/1.png'  
+      photo: "/aboutus/company/lapnet_employee_image/aministration/1.png",
     },
     {
       id: 4,
-     name: "ທ່ານ ວັດທະນາ ວໍລະບຸດ",
+      name: "ທ່ານ ວັດທະນາ ວໍລະບຸດ",
       role: "ຫົວໜ້າພະແນກບັນຊີ ແລະ ການເງິນ",
       photo: "/aboutus/company/lapnet_employee_image/finance/1.png",
     },
     {
       id: 5,
-      name: 'ທ່ານ ພູເຂົາທອງ ເມືອງວົງ',
-      role: 'ຫົວໜ້າພະແນກໄອທີ',
-      photo: '/aboutus/company/lapnet_employee_image/IT/1.png'
+      name: "ທ່ານ ພູເຂົາທອງ ເມືອງວົງ",
+      role: "ຫົວໜ້າພະແນກໄອທີ",
+      photo: "/aboutus/company/lapnet_employee_image/IT/1.png",
     },
     {
       id: 6,
-      name: 'ທ່ານ ເດດມີໄຊ ວັນນະຈິດ',
-      role: 'ຫົວໜ້າພະແນກດໍາເນີນງານ',
-      photo: '/aboutus/company/lapnet_employee_image/operation/1.png'
+      name: "ທ່ານ ເດດມີໄຊ ວັນນະຈິດ",
+      role: "ຫົວໜ້າພະແນກດໍາເນີນງານ",
+      photo: "/aboutus/company/lapnet_employee_image/operation/1.png",
     },
     {
       id: 7,
@@ -151,7 +147,46 @@ const rows = [
       photo: "/aboutus/company/avarta.png",
     },
   ],
+
+  // Row 4 – (1 node) ✅ ใส่ flag isRow4 เพื่อเอาไปจัด style/reorder ตอน mobile
+  [
+    {
+      id: 8,
+      name: "ທ່ານ ນາງ ອາລີພອນ ເພັງສະຫວັດດີ",
+      role: "ຮອງຫົວໜ້າພະແນກຫ້ອງການ",
+      photo: "/aboutus/company/lapnet_employee_image/aministration/2.png",
+      isRow4: true,
+    },
+  ],
 ];
+
+// ✅ ตรวจโหมด 1 column (<= 640px)
+const isOneColumn = ref(false);
+let mq = null;
+
+const handleMQ = (e) => {
+  isOneColumn.value = !!e.matches;
+};
+
+// ✅ rows ที่ใช้ render จริง
+// - Desktop: [row1,row2,row3,row4]
+// - Mobile 1 column: ย้าย id:8 ไปอยู่ใต้ id:3 (หลังตัวแรกของ row3) แล้วรวมเป็นแถวเดียว (ไม่มี row4 แยก)
+const rowsToRender = computed(() => {
+  if (!isOneColumn.value) return baseRows;
+
+  const r1 = baseRows[0] ?? [];
+  const r2 = baseRows[1] ?? [];
+  const r3 = baseRows[2] ? [...baseRows[2]] : [];
+  const r4First = baseRows[3]?.[0];
+
+  if (r4First && r3.length > 0) {
+    r3.splice(1, 0, r4First); // ✅ หลัง id:3 ทันที
+  } else if (r4First) {
+    r3.push(r4First);
+  }
+
+  return [r1, r2, r3];
+});
 
 // initials fallback (2 ตัวแรก)
 const getInitials = (name) => (name || "").trim().slice(0, 2) || "?";
@@ -159,6 +194,16 @@ const getInitials = (name) => (name || "").trim().slice(0, 2) || "?";
 let gsapCtx;
 
 onMounted(() => {
+  // matchMedia (กัน SSR)
+  if (typeof window !== "undefined") {
+    mq = window.matchMedia("(max-width: 640px)");
+    isOneColumn.value = mq.matches;
+
+    if (mq.addEventListener) mq.addEventListener("change", handleMQ);
+    else mq.addListener(handleMQ);
+  }
+
+  // GSAP
   gsapCtx = gsap.context(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -194,13 +239,16 @@ onMounted(() => {
         },
         "-=0.55"
       );
-
-    // ✅ ลบ floating animation ออก (ไม่มี gsap.to ให้ลอยแล้ว)
   }, root.value);
 });
 
 onBeforeUnmount(() => {
   if (gsapCtx) gsapCtx.revert();
+
+  if (mq) {
+    if (mq.removeEventListener) mq.removeEventListener("change", handleMQ);
+    else mq.removeListener(handleMQ);
+  }
 });
 </script>
 
@@ -296,20 +344,32 @@ onBeforeUnmount(() => {
   border-radius: 16px;
   border: 2px dashed rgba(148, 163, 184, 0.8);
   background: radial-gradient(circle at top, #f8fafc, #edf2ff 40%, #f9fafb);
-  perspective: 1600px;
+  perspective: 1680px;
+
+  /* ✅ Row4 Variables (ใช้กับการ์ดที่มี isRow4=true แม้ตอน mobile จะถูก merge เข้า row3) */
+  --row4-card-width: 265px;
+  --row4-card-padding: 56px 28px 22px;
+  --row4-avatar-size: 112px;
+  --row4-avatar-padding: 9px;
+  --row4-name-size: 1rem;
+  --row4-role-size: 1rem;
 }
 
 /* ROWS */
 .org-row {
+  
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 42px;
+  gap: 22px;
   margin-bottom: 70px;
 }
 
-/* last row no bottom gap */
-.org-row--2 {
+/* ✅ Row 4: desktop ให้ชิดซ้าย (จะมีเฉพาะตอน desktop เพราะ mobile จะ merge แล้วไม่มี row--3) */
+.org-row--3 {
+  justify-content: flex-start;
   margin-bottom: 0;
+  
 }
 
 /* CARD (CEO/COO ใช้ style เดิม) */
@@ -341,7 +401,7 @@ onBeforeUnmount(() => {
   transition: opacity 0.35s ease-out;
 }
 
-/* hover (ยังคงไว้เหมือนเดิม) */
+/* hover */
 .org-card:hover {
   transform: translateY(-12px) rotateX(6deg) rotateY(-3deg) scale(1.02);
   box-shadow: 0 28px 70px rgba(15, 23, 42, 0.65);
@@ -352,9 +412,10 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
-/* ✅ Row3 card: สี #123765 ล้วน + ขนาดเล็กลงให้พอดี 5 ใบ */
+/* ✅ Heads style (row3/row4 zone) */
 .org-card--head {
-  width: 300px;
+  width: 320px;
+  margin-top: 30px;
   padding: 56px 28px 22px;
   background: #123765 !important;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -362,10 +423,30 @@ onBeforeUnmount(() => {
 }
 
 .org-card--head:hover {
-  /* ยังให้ hover ได้ แต่คงสีล้วน */
   background: #123765 !important;
   transform: translateY(-10px) rotateX(5deg) rotateY(-2deg) scale(1.015);
   box-shadow: 0 26px 60px rgba(15, 23, 42, 0.6);
+}
+
+/* ✅ Row4 override: ปรับขนาดได้ตามต้องการ (ทำงานผ่าน isRow4 flag) */
+.org-card--row4 {
+  width: var(--row4-card-width, 300px);
+  padding: var(--row4-card-padding, 56px 28px 22px);
+
+  margin-top: 40px;
+}
+
+.org-card--row4 .org-avatar-ring {
+  width: var(--row4-avatar-size, 112px);
+  height: var(--row4-avatar-size, 112px);
+  padding: var(--row4-avatar-padding, 9px);
+}
+
+.org-card--row4 .org-card-name {
+  font-size: var(--row4-name-size, 1rem);
+}
+.org-card--row4 .org-card-role {
+  font-size: var(--row4-role-size, 1rem);
 }
 
 /* AVATAR */
@@ -385,7 +466,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.55);
 }
 
-/* ลดวงแหวนใน row3 ให้ดูพอดีกับการ์ดเล็ก */
+/* ลดวงแหวนใน heads (รวมถึง Row4 card ถ้าไม่ได้ override) */
 .org-card--head .org-avatar-ring {
   width: 112px;
   height: 112px;
@@ -415,7 +496,7 @@ onBeforeUnmount(() => {
   color: #e5edff;
 }
 
-/* TEXT */
+/* TEXT (default) */
 .org-card-name {
   margin: 18px 0 6px;
   font-size: var(--fs-md);
@@ -428,7 +509,7 @@ onBeforeUnmount(() => {
   opacity: 0.94;
 }
 
-/* row3 text slightly smaller */
+/* heads text */
 .org-card--head .org-card-name {
   font-size: 1.02rem;
 }
@@ -439,8 +520,13 @@ onBeforeUnmount(() => {
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .org-row--2 {
-    flex-wrap: wrap; /* row3 5 ใบ ให้ wrap */
+    flex-wrap: wrap;
     gap: 28px;
+  }
+
+  /* ✅ responsive: Row4 (ถ้ามีแถวแยกบน desktop) ให้มาอยู่กลาง */
+  .org-row--3 {
+    justify-content: center;
   }
 }
 
@@ -448,6 +534,7 @@ onBeforeUnmount(() => {
   .org-frame {
     margin: 28px 24px 32px;
     padding: 56px 20px 42px;
+    --row4-card-width: 320px;
   }
 
   .org-row {
@@ -455,13 +542,24 @@ onBeforeUnmount(() => {
     margin-bottom: 50px;
   }
 
+  .org-row--3 {
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
   .org-card {
-     margin-top: 40px;
+    margin-top: 80px;
     width: 360px;
   }
 
   .org-card--head {
     width: 320px;
+  }
+
+  .org-card--row4 {
+  
+    width: var(--row4-card-width, 320px);
+    padding: var(--row4-card-padding, 56px 28px 22px);
   }
 }
 
@@ -486,18 +584,17 @@ onBeforeUnmount(() => {
     width: 100%;
     max-width: 340px;
     padding-inline: 24px;
-
-    margin-top: 40px;
+    margin-top: 80px;
   }
 
   .org-card--head {
     max-width: 340px;
-    
   }
 
   .org-frame {
     margin: 22px 16px 30px;
     padding: 50px 16px 34px;
+    --row4-card-width: 100%;
   }
 }
 </style>

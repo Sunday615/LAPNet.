@@ -47,38 +47,14 @@
                 <span class="bank-name">ບໍລິສັດ ຢູນຽນເພ ສາກົນ ຈຳກັດ</span>
               </div>
 
-              <div class="name">ທ່ານ CHU XUEMEI</div>
+              <div class="name">ທ່ານ ນາງ CHU XUEMEI</div>
               <div class="position">ຫົວໜ້າຄະນະກຳມະການກວດກາ</div>
             </div>
           </div>
         </div>
 
         <!-- Node 2 -->
-        <div class="org-node">
-          <div class="connector-dot"></div>
-
-          <div class="person-card member-card">
-            <div class="avatar-wrapper">
-              <div class="avatar">
-                <img src="/board-director-profile/ldb.webp" alt="" />
-              </div>
-            </div>
-
-            <div class="person-info">
-              <div class="bank-meta">
-                <img
-                  class="bank-logo"
-                  src="/logoallmember/circle_scale/LDB.PNG"
-                  alt="LDB"
-                />
-                <span class="bank-name">ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ</span>
-              </div>
-
-              <div class="name">ທ່ານ ສອນຕາວັນ ໄກສອນເສນາ</div>
-              <div class="position">ຮອງຫົວໜ້າຄະນະກຳມະການກວດກາ</div>
-            </div>
-          </div>
-        </div>
+      
 
         <!-- Node 3 -->
         <div class="org-node">
@@ -102,6 +78,31 @@
               </div>
 
               <div class="name">ທ່ານ ສີສະອາດ ນຶມອາສາ</div>
+              <div class="position">ຮອງຫົວໜ້າຄະນະກຳມະການກວດກາ</div>
+            </div>
+          </div>
+        </div>
+          <div class="org-node">
+          <div class="connector-dot"></div>
+
+          <div class="person-card member-card">
+            <div class="avatar-wrapper">
+              <div class="avatar">
+                <img src="/board-director-profile/ldb.webp" alt="" />
+              </div>
+            </div>
+
+            <div class="person-info">
+              <div class="bank-meta">
+                <img
+                  class="bank-logo"
+                  src="/logoallmember/circle_scale/LDB.PNG"
+                  alt="LDB"
+                />
+                <span class="bank-name">ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ</span>
+              </div>
+
+              <div class="name">ທ່ານ ສອນຕາວັນ ໄກສອນເສນາ</div>
               <div class="position">ຮອງຫົວໜ້າຄະນະກຳມະການກວດກາ</div>
             </div>
           </div>
@@ -383,6 +384,7 @@ onUnmounted(() => {
   letter-spacing: 0.02em;
   white-space: nowrap;
   overflow: hidden;
+
   text-overflow: ellipsis;
 }
 

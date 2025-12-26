@@ -127,22 +127,23 @@ const cards = [
     network: "BCEL ",
     logo: "/logoallmember/circle_scale/BCEL.png",
   },
-  {
+    {
     id: 2,
-    holder: "xxx xxxxx****xxxxx",
-    number: "**** **** **** 9834",
-    expiry: "11/26",
-    network: "LDB",
-    logo: "/logoallmember/circle_scale/LDB.PNG",
-  },
-  {
-    id: 3,
     holder: "xxxxxx ****xxxx",
     number: "**** **** **** 5532",
     expiry: "04/28",
     network: "APB",
     logo: "/logoallmember/circle_scale/APBB.PNG",
   },
+  {
+    id: 3,
+    holder: "xxx xxxxx****xxxxx",
+    number: "**** **** **** 9834",
+    expiry: "11/26",
+    network: "LDB",
+    logo: "/logoallmember/circle_scale/LDB.PNG",
+  },
+
   {
     id: 4,
     holder: "xxxxxxxxx ****xxxxx",

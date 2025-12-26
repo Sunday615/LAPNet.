@@ -8,7 +8,8 @@
     </div>
 
     <div class="card">
-      <table class="modern-table">
+      <!-- Desktop Table -->
+      <table class="modern-table desktop-table">
         <thead>
           <tr>
             <th class="col-name">ໂອນເງິນແຕ່ຈຳນວນ</th>
@@ -17,13 +18,43 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, i) in rows" :key="row.id" :class="{ 'alt': i % 2 === 1 }">
+          <tr v-for="(row, i) in rows" :key="row.id" :class="{ alt: i % 2 === 1 }">
             <td>{{ row.name }}</td>
             <td>{{ row.role }}</td>
             <td>{{ row.location }}</td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Mobile Blocks (2 rows per block) -->
+      <div class="mobile-list">
+        <div
+          v-for="(pair, gi) in groupedRows"
+          :key="`group-${gi}`"
+          class="mobile-block"
+          :class="{ alt: gi % 2 === 1 }"
+        >
+          <div v-for="(row, ri) in pair" :key="row.id" class="mobile-row">
+            <div class="mobile-cell">
+              <div class="label">ໂອນເງິນແຕ່ຈຳນວນ</div>
+              <div class="value">{{ row.name }}</div>
+            </div>
+
+            <div class="mobile-cell">
+              <div class="label">ຫາຈຳນວນ</div>
+              <div class="value">{{ row.role }}</div>
+            </div>
+
+            <div class="mobile-cell">
+              <div class="label">ຄ່າບໍລິການ</div>
+              <div class="value">{{ row.location }}</div>
+            </div>
+
+            <!-- separator between 2 rows inside same block -->
+            <div v-if="ri === 0 && pair.length === 2" class="row-sep"></div>
+          </div>
+        </div>
+      </div>
 
       <div class="footer">
         <small>Showing {{ rows.length }} rows</small>
@@ -33,9 +64,8 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import html2canvas from 'html2canvas'
-
 
 const props = defineProps({
   title: { type: String, default: 'ຄິດໄລ່ຄ່າບໍລິການດັ່ງນີ້ :' }
@@ -59,6 +89,15 @@ const original = [
 ]
 
 const rows = reactive([...original])
+
+// ✅ group rows 2-by-2 for mobile blocks
+const groupedRows = computed(() => {
+  const out = []
+  for (let i = 0; i < rows.length; i += 2) {
+    out.push(rows.slice(i, i + 2))
+  }
+  return out
+})
 
 async function downloadImage() {
   const tableElement = tableRef.value
@@ -97,7 +136,6 @@ async function downloadImage() {
   font-size: 30px;
   font-weight: 700;
   color: #000000;
-
 }
 
 .actions button {
@@ -106,7 +144,7 @@ async function downloadImage() {
 
 .actions {
   display: flex;
-  gap: 8px
+  gap: 8px;
 }
 
 .btn {
@@ -121,7 +159,7 @@ async function downloadImage() {
 }
 
 .btn.ghost {
-  display: none
+  display: none;
 }
 
 .card {
@@ -132,6 +170,7 @@ async function downloadImage() {
   overflow: hidden;
 }
 
+/* ===== Desktop table ===== */
 .modern-table {
   width: 100%;
   border-collapse: separate;
@@ -163,12 +202,59 @@ async function downloadImage() {
   vertical-align: middle;
 }
 
+/* ===== Mobile blocks ===== */
+.mobile-list {
+  display: none;
+  font-family: "Noto Sans Lao", sans-serif;
+}
+
+.mobile-block {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.mobile-block.alt {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.mobile-row {
+  position: relative;
+  padding: 10px 0;
+}
+
+.row-sep {
+  margin-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.18);
+}
+
+.mobile-cell {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.label {
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+.value {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Footer */
 .footer {
   display: flex;
   justify-content: flex-end;
   padding-top: 10px;
   color: #cbd5e1;
-  font-size: 13px
+  font-size: 13px;
 }
 
 /* Responsive */
@@ -178,22 +264,20 @@ async function downloadImage() {
     width: 95%;
   }
 
-  .modern-table thead {
-    display: none
+  /* hide desktop table, show mobile blocks */
+  .desktop-table {
+    display: none;
   }
-
-  .modern-table tbody td {
+  .mobile-list {
     display: block;
-    padding: 12px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1)
   }
 
-  .modern-table tbody td:first-child {
-    font-weight: 700
+  .title {
+    font-size: 22px;
   }
 
   .actions {
-    gap: 6px
+    gap: 6px;
   }
 }
 </style>

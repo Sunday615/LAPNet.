@@ -28,8 +28,8 @@
           <div class="logomember logomember-top">
             <div class="logo-row row-1">
               <img src="/logoallmember/retangle_scale/BCEL.png" alt="BCEL" />
-              <img src="/logoallmember/retangle_scale/LDBnew.png" alt="LDB" />
               <img src="/Logomember/APB.png" alt="APB" />
+              <img src="/logoallmember/retangle_scale/LDBnew.png" alt="LDB" />
               <img src="/logoallmember/retangle_scale/LVBnew.png" alt="LVB" />
               <img src="/logoallmember/retangle_scale/jdbnew.png" alt="JDB" />
          

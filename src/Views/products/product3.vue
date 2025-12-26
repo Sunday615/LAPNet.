@@ -25,14 +25,15 @@ const memberLogos = [
       src: "/logoallmember/circle_scale/BCEL.png",
       alt: "Space AI",
    },
+      {
+      src: "/logoallmember/circle_scale/APBB.PNG",
+      alt: "Partner B",
+   },
    {
       src: "/logoallmember/circle_scale/LDB.PNG",
       alt: "Partner A",
    },
-   {
-      src: "/logoallmember/circle_scale/APBB.PNG",
-      alt: "Partner B",
-   },
+
    {
       src: "/logoallmember/circle_scale/lvb.PNG",
       alt: "Client Z",

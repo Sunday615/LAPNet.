@@ -21,14 +21,15 @@ const memberLogos = [
         src: "/logoallmember/circle_scale/BCEL.png",
         alt: "Space AI",
     },
+       {
+        src: "/logoallmember/circle_scale/APBB.PNG",
+        alt: "Partner B",
+    },
     {
         src: "/logoallmember/circle_scale/LDB.PNG",
         alt: "Partner A",
     },
-    {
-        src: "/logoallmember/circle_scale/APBB.PNG",
-        alt: "Partner B",
-    },
+ 
     {
         src: "/logoallmember/circle_scale/lvb.PNG",
         alt: "Client Z",
@@ -168,19 +169,6 @@ const members = ref([
         filters: ['kh-la', 'la-kh', 'th-la', 'la-th', 'vn-la', 'cn-la'],
     },
     {
-        image: "/logoallmember/circle_scale/LDB.PNG",
-        title: "ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ (LDB)",
-        subtitle: "Lao Development Bank ",
-        link1: "https://www.facebook.com/ldblao",
-        link2: "https://www.ldblao.la/",
-        layer1: "linear-gradient(#233f73, #1c335f) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
-        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
-        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
-        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
-        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
-        filters: ['kh-la', 'th-la', 'la-th', 'vn-la', 'cn-la'],
-    },
-    {
         image: "/logoallmember/circle_scale/APBB.PNG",
         title: "ທະນາຄານ ສົ່ງເສີມກະສິກຳ ຈຳກັດ (APB)",
         subtitle: "Agricultural Promotion Bank ",
@@ -193,6 +181,20 @@ const members = ref([
         layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
         filters: ['kh-la', 'la-kh', 'th-la', 'la-th', 'vn-la', 'cn-la'],
     },
+    {
+        image: "/logoallmember/circle_scale/LDB.PNG",
+        title: "ທະນາຄານ ພັດທະນາລາວ ຈຳກັດ (LDB)",
+        subtitle: "Lao Development Bank ",
+        link1: "https://www.facebook.com/ldblao",
+        link2: "https://www.ldblao.la/",
+        layer1: "linear-gradient(#233f73, #1c335f) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+        filters: ['kh-la', 'th-la', 'la-th', 'vn-la', 'cn-la'],
+    },
+    
     {
         image: "/logoallmember/circle_scale/lvb.PNG",
         title: "ທະນາຄານ ຮ່ວມທຸລະກິດລາວ-ຫວຽດ (LVB) ",

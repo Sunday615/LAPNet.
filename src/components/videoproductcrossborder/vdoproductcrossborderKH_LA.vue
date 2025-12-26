@@ -27,8 +27,8 @@
           <div class="logomember">
             <div class="row1">
               <img src="/logoallmember/retangle_scale/BCEL.png" alt="BCEL" />
-              <img src="/logoallmember/retangle_scale/LDBnew.png" alt="LDB" />
               <img src="/logoallmember/retangle_scale/APB.png" alt="APB" />
+              <img src="/logoallmember/retangle_scale/LDBnew.png" alt="LDB" />
             
               <img src="/logoallmember/retangle_scale/LVBnew.png" alt="LVB" />
                 <img src="/logoallmember/retangle_scale/jdbnew.png" alt="JDB" />
