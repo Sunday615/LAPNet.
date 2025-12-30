@@ -143,7 +143,6 @@
           </div>
 
           <!-- ✅ Bottom actions (theme-matching) -->
-          <!-- ⭐ สำคัญ: stop pointer events ไม่ให้ไปชน overlay-card swipe -->
           <div
             class="overlay-actions"
             role="group"
@@ -966,7 +965,7 @@ h1{
   max-height: 86vh;
   overflow:auto;
   border-radius:22px;
-  
+
   padding:18px 18px 0; /* bottom handled by sticky actions */
   background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
   border:1px solid rgba(255,255,255,.16);
@@ -999,7 +998,7 @@ h1{
   font-size:12px;
   letter-spacing:.12em;
   text-transform:uppercase;
- 
+
 }
 .overlay-count{ color:rgba(234,241,255,.95); font-weight:800; }
 
@@ -1043,7 +1042,7 @@ h1{
 
 .overlay-body{
   padding:14px 6px 16px;
-  
+
 }
 
 .overlay-desc{
@@ -1052,7 +1051,7 @@ h1{
   line-height:1.85;
   color:rgba(234,241,255,.86);
   white-space:pre-wrap;
-  
+
 }
 
 /* ✅ Bottom nav inside overlay card */
@@ -1063,7 +1062,7 @@ h1{
   align-items:center;
   justify-content:space-between;
   gap:12px;
- 
+
 }
 
 .ov-btn{
@@ -1159,72 +1158,68 @@ h1{
     0 0 0 7px rgba(96,165,250,.18);
 }
 
-/* ✅ Mobile layout (1 column) — DOT อยู่ระดับเดียวกับเส้น + เส้นขีดไปหา card */
+/* ✅ Mobile layout (1 column) — ทำให้ .node อยู่ “กึ่งกลางหน้าจอ” เหมือน overlay-card */
 @media (max-width: 820px){
   .hero{flex-direction:column;align-items:flex-start}
 
-  /* ✅ เส้น timeline อยู่ซ้าย 22px */
+  /* ✅ เส้น timeline กลับมาอยู่กึ่งกลาง (เหมือน overlay-card center) */
   .line{
-    left:22px;
-    transform:none;
+    left:50%;
+    transform:translateX(-50%);
   }
 
+  /* ✅ 1 column + แยก node เป็นแถวบน เพื่อให้อยู่กลางเสมอและไม่ชนการ์ด */
   .event{
-    grid-template-columns:44px 1fr; /* ✅ 44px => กึ่งกลาง = 22px ตรงกับเส้น */
+    grid-template-columns: 1fr;
+    grid-template-rows: 44px auto;
     align-items:stretch;
-    padding:14px 0;
+    padding:18px 0 22px;
     min-height:auto;
     position:relative;
   }
 
-  /* ✅ ซ่อน side ที่ไม่ได้ใช้ เพื่อไม่ให้ช่องว่างทำให้ dot เพี้ยน */
+  /* ✅ ซ่อน side ที่ไม่ได้ใช้ เพื่อไม่ให้กินพื้นที่ */
   .event[data-side="left"]  .side.right{ display:none; }
   .event[data-side="right"] .side.left { display:none; }
 
-  .side{
-    grid-column:2;
-    padding:8px 0 8px 10px;
-    align-self:stretch;
-    display:flex;
-  }
-
-  /* ✅ MID ให้สูงเท่ากับ card แล้วจัดกลางแนวตั้งจริง */
   .mid{
     grid-column:1;
-    align-self:stretch;
+    grid-row:1;
     position:relative;
-    min-height:0;
-    height:auto;
-    overflow:visible;
-
+    min-height:44px;
     display:flex;
-    align-items:center;      /* ✅ dot อยู่กึ่งกลาง card แนวตั้ง */
-    justify-content:center;  /* ✅ dot อยู่ x=22px ตรงเส้น */
+    align-items:center;
+    justify-content:center; /* ✅ node กลางแนวนอน */
   }
 
-  /* ✅ เปลี่ยน node เป็น relative (ไม่ใช้ absolute) เพื่อให้อยู่กลาง row เป๊ะ */
+  /* ✅ node ไม่ใช้ absolute แล้ว ให้อยู่กลางแถวบนได้เป๊ะ */
   .node{
     position:relative;
     top:auto;
     left:auto;
-    
     transform:none;
-    display: none;
+    margin:0 auto;
   }
 
-  /* ✅ เส้นที่ “ขีดไปหา events” ในโหมด 1 column (จากเส้นไปหาการ์ด) */
- 
-
-  /* ✅ บนมือถือไม่ต้องใช้ connector เดิม (ของ desktop) */
+  /* ✅ บนมือถือไม่ใช้ connector เดิม (desktop) */
   .connector{ display:none; }
 
-  .card{
+  .side{
+    grid-column:1;
+    grid-row:2;
+    padding:6px 0 8px;
+    align-self:stretch;
     display:block;
-    width:100%;
-    max-width:none;
   }
 
-  .event[data-side="left"] .card{margin-left:0;}
+  /* ✅ ให้ card อยู่กลางเหมือน overlay-card (ไม่ชิดซ้าย) */
+  .card{
+    display:block;
+    width:min(560px, 100%);
+    max-width:none;
+    margin:0 auto;
+  }
+  .event[data-side="left"] .card{ margin-left:auto; margin-right:auto; }
 
   /* overlay */
   .overlay{ padding:14px; }
