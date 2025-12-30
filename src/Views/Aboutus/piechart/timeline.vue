@@ -966,6 +966,7 @@ h1{
   max-height: 86vh;
   overflow:auto;
   border-radius:22px;
+  
   padding:18px 18px 0; /* bottom handled by sticky actions */
   background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
   border:1px solid rgba(255,255,255,.16);
@@ -998,6 +999,7 @@ h1{
   font-size:12px;
   letter-spacing:.12em;
   text-transform:uppercase;
+ 
 }
 .overlay-count{ color:rgba(234,241,255,.95); font-weight:800; }
 
@@ -1013,6 +1015,7 @@ h1{
   font-size:12px;
   letter-spacing:.12em;
   text-transform:uppercase;
+
 }
 
 .overlay-chip-dot{
@@ -1040,6 +1043,7 @@ h1{
 
 .overlay-body{
   padding:14px 6px 16px;
+  
 }
 
 .overlay-desc{
@@ -1048,6 +1052,7 @@ h1{
   line-height:1.85;
   color:rgba(234,241,255,.86);
   white-space:pre-wrap;
+  
 }
 
 /* ✅ Bottom nav inside overlay card */
@@ -1058,13 +1063,7 @@ h1{
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding:12px 12px;
-  margin-top: 8px;
-
-  background:
-    linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(2,6,23,.62) 30%, rgba(2,6,23,.78) 100%);
-  border-top: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(10px);
+ 
 }
 
 .ov-btn{
@@ -1208,7 +1207,9 @@ h1{
     position:relative;
     top:auto;
     left:auto;
+    
     transform:none;
+    display: none;
   }
 
   /* ✅ เส้นที่ “ขีดไปหา events” ในโหมด 1 column (จากเส้นไปหาการ์ด) */
