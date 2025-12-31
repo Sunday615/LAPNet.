@@ -4,11 +4,7 @@
       <header class="hero">
         <div>
           <div class="kicker">Roadmap</div>
-          <h1> <span style="font-size: 50px;   font-weight: bold;
-  background: #5BBDFF;
-  background: linear-gradient(to right, #5BBDFF 0%, #0f44ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; ">ຄວາມເປັນມາຂອງ</span> <br>Lao National Payment Network CO., LTD</h1>
+          <h1> <span id="roadmap-title">ຄວາມເປັນມາຂອງ</span> <br>Lao National Payment Network CO., LTD</h1>
           <p class="sub" style="display:flex; align-items:center;">
             <img src="/logolapnet/fullcircle.png" alt="" style="width: 30px; height:30px; margin-right: 7px;" />
             Lao National Payment Network CO., LTD
@@ -570,6 +566,13 @@ onBeforeUnmount(() => {
 
 <style scoped>
 /* screen-reader only */
+#roadmap-title {
+  font-size: 50px;   font-weight: bold;
+  background: #5BBDFF;
+  background: linear-gradient(to right, #5BBDFF 0%, #0f44ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .sr-only {
   position: absolute;
   width: 1px;
