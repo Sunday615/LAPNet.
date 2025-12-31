@@ -169,6 +169,14 @@ import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import main_navbar from '../../../components/miannavbar/main_navbar.vue'
 import secondfooter from '../../../components/footer/mainfooter/secondfooter.vue'
+onMounted(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+});
+
 
 const glassCard = ref(null)
 const chipStack = ref(null)

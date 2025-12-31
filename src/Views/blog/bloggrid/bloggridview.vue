@@ -1,8 +1,8 @@
 <script setup>
 import main_navbar from '../../../components/miannavbar/main_navbar.vue';
-import { onMounted } from 'vue';
 import bloggridsection from './bloggridsection.vue';
 import secondfooter from '../../../components/footer/mainfooter/secondfooter.vue';
+import { onMounted } from 'vue';
 onMounted(() => {
   window.scrollTo({
     top: 0,

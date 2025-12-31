@@ -1,10 +1,19 @@
 <script setup>
 import main_navbar from '../../components/miannavbar/main_navbar.vue';
 import secondfooter from '../../components/footer/mainfooter/secondfooter.vue';
+import {onMounted } from 'vue'
 const openMap = () => {
     const mapUrl = 'https://maps.app.goo.gl/TzSSbm5NQWCWNsrx7'
     window.open(mapUrl, '_blank')
 }
+
+onMounted(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+});
 </script>
 
 <template>

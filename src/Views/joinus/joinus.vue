@@ -227,6 +227,14 @@ import main_navbar from '../../components/miannavbar/main_navbar.vue';
 import secondfooter from '../../components/footer/mainfooter/secondfooter.vue';
 const swiperModules = [Autoplay, Pagination];
 
+onMounted(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+});
+
 // SECTION REFS FOR GSAP
 const heroRef = ref(null);
 const swiperRef = ref(null);
